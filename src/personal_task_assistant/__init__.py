@@ -1,6 +1,9 @@
 from google import genai
 
+from agent import Agent
+
 
 def main() -> None:
     client = genai.Client()
-    print("Hello from personal-task-assistant!")
+    agent = Agent(client)
+    agent.run()
