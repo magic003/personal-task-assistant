@@ -1,0 +1,17 @@
+[project]
+name = "personal-task-assistant"
+version = "0.1.0"
+description = "An AI agent managing personal tasks"
+readme = "README.md"
+authors = [
+    { email = "minjiezha@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+personal-task-assistant = "personal_task_assistant:main"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
