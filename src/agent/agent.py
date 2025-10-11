@@ -1,4 +1,7 @@
 from google import genai
+from google.genai import types
+
+from tools import current_time
 
 
 class Agent:
@@ -9,7 +12,15 @@ class Agent:
     def run(self) -> None:
         print("Welcome to personal task assistant! (type 'exit' to quit)\n")
 
-        chat = self.client.chats.create(model=self.model)
+        chat = self.client.chats.create(
+            model=self.model,
+            config=types.GenerateContentConfig(
+                tools=[current_time],
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=0
+                ),  # Disables thinking
+            ),
+        )
 
         while True:
             user_input = input("\u001b[94mYou\u001b[0m: ")
