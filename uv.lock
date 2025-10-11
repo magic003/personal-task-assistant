@@ -158,10 +158,14 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "google-genai" },
+    { name = "pydantic" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "google-genai", specifier = ">=1.41.0" }]
+requires-dist = [
+    { name = "google-genai", specifier = ">=1.41.0" },
+    { name = "pydantic", specifier = ">=2.11.10" },
+]
 
 [[package]]
 name = "pyasn1"
