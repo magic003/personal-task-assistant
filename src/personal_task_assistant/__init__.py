@@ -5,5 +5,5 @@ from agent import Agent
 
 def main() -> None:
     client = genai.Client()
-    agent = Agent(client)
+    agent = Agent(client=client, model="gemini-2.5-flash")
     agent.run()
