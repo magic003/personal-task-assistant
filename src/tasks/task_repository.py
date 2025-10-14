@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from tasks import Task
+from .task import Task
 
 
 class TaskRepository(Protocol):

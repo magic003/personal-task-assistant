@@ -2,7 +2,8 @@ import sqlite3
 import uuid
 from datetime import datetime
 
-from tasks import Task, TaskRepository
+from .task import Task
+from .task_repository import TaskRepository
 
 
 class SqliteTaskRepository(TaskRepository):
