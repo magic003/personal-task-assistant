@@ -1,13 +1,17 @@
 from google import genai
 from google.genai import types
 
+from tasks.task_repository import TaskRepository
 from tools import current_time
 
 
 class Agent:
-    def __init__(self, client: genai.Client, model: str) -> None:
+    def __init__(
+        self, client: genai.Client, model: str, task_repository: TaskRepository
+    ) -> None:
         self.client = client
         self.model = model
+        self.task_repository = task_repository
 
     def run(self) -> None:
         print("Welcome to personal task assistant! (type 'exit' to quit)\n")
