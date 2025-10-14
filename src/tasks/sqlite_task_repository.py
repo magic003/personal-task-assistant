@@ -1,6 +1,8 @@
 import sqlite3
 import uuid
 from datetime import datetime
+from types import TracebackType
+from typing import Literal, Optional, Type
 
 from .task import Task
 from .task_repository import TaskRepository
@@ -11,8 +13,20 @@ class SqliteTaskRepository(TaskRepository):
 
     def __init__(self, db_file: str) -> None:
         self.db_file = db_file
+
+    def __enter__(self) -> "SqliteTaskRepository":
         self._connect()
         self._create_table()
+        return self
+
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_value: Optional[BaseException],
+        traceback: Optional[TracebackType],
+    ) -> Literal[False]:
+        self.disconnect()
+        return False
 
     def create_task(self, task: Task) -> Task:
         if task.id is not None:
