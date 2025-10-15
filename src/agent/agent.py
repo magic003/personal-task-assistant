@@ -21,6 +21,9 @@ class Agent:
             model=self.model,
             config=types.GenerateContentConfig(
                 tools=[current_time, self.tasks_tool.add_task],
+                automatic_function_calling=types.AutomaticFunctionCallingConfig(
+                    disable=False
+                ),
                 thinking_config=types.ThinkingConfig(
                     thinking_budget=0
                 ),  # Disables thinking
